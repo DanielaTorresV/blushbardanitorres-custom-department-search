@@ -1,7 +1,10 @@
 import React from "react";
+import { useCssHandles } from "vtex.css-handles";
+import "./styles.css"
 
 type Props = {
-  departments: [Department]
+  departments: [Department],
+  handleSetSlug: any
 }
 
 type Department = {
@@ -10,8 +13,16 @@ type Department = {
   slug: string
 }
 
-const DepartmentGroup = ({departments}: Props) => {
-  console.log("Mis departamentos son:", departments);
+const DepartmentGroup = ({departments, handleSetSlug}: Props) => {
+  const CSS_HANDLES = [
+    "container__select"
+  ]
+  const handles = useCssHandles(CSS_HANDLES)
+
+  const onHandleSetSlug = (event: any) => {
+    handleSetSlug(`${event.target.value}/$\{term\}?initialMap=c&initialQuery=${event.target.value}&map=category-1,category-2`)
+  }
+
    const departmentOptions:any = departments.map((department: Department) => {
       return (
         <option
@@ -25,8 +36,11 @@ const DepartmentGroup = ({departments}: Props) => {
 
   return(
     <select
-    defaultValue="value0">
-      <option disabled value="value0">Seleccione una Opción</option>
+    className={handles["container__select"]}
+    onChange={onHandleSetSlug}
+    defaultValue="value0"
+    >
+      <option disabled value="value0">Selecciona una Opción</option>
       {departmentOptions}
     </select>
   )
