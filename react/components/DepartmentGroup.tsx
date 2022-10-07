@@ -10,7 +10,7 @@ type Props = {
 type Department = {
   id: number
   name: string
-  slug: string
+  slug: any
 }
 
 const DepartmentGroup = ({departments, handleSetSlug}: Props) => {
@@ -20,7 +20,7 @@ const DepartmentGroup = ({departments, handleSetSlug}: Props) => {
   const handles = useCssHandles(CSS_HANDLES)
 
   const onHandleSetSlug = (event: any) => {
-    handleSetSlug(`${event.target.value}/$\{term\}?initialMap=c&initialQuery=${event.target.value}&map=category-1,category-2`)
+    handleSetSlug(`${event.target.value}/$\{term\}?initialMap=c&initialQuery=$\{term\}&map=category-1,category-2`)
   }
 
    const departmentOptions:any = departments.map((department: Department) => {
