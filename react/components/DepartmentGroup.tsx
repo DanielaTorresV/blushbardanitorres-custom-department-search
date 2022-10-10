@@ -14,13 +14,8 @@ type Department = {
 }
 
 const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
-  const CSS_HANDLES = ['container__select']
-  const handles = useCssHandles(CSS_HANDLES)
-
   const onHandleSetSlug = (event: any) => {
-    handleSetSlug(
-      `${event.target.value}?initialMap=c&initialQuery&map=category-1,category-2`
-    )
+    handleSetSlug(`${event.target.value}`)
   }
 
   const departmentOptions: any = departments.map((department: Department) => {
@@ -30,6 +25,9 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
       </option>
     )
   })
+
+  const CSS_HANDLES = ['container__select']
+  const handles = useCssHandles(CSS_HANDLES)
 
   return (
     <select
