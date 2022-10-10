@@ -1,6 +1,7 @@
 {
   "department-search": {
     "component": "DepartmentSearch",
-    "composition": "children"
+    "composition": "children",
+    "render": "client"
   }
 }

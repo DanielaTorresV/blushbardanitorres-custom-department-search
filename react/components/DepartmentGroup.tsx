@@ -1,46 +1,45 @@
-import React from "react";
-import { useCssHandles } from "vtex.css-handles";
-import "./styles.css"
+import React from 'react'
+import { useCssHandles } from 'vtex.css-handles'
+import './styles.css'
 
 type Props = {
-  departments: [Department],
+  departments: [Department]
   handleSetSlug: any
 }
 
 type Department = {
   id: number
   name: string
-  slug: any
+  slug: string
 }
 
-const DepartmentGroup = ({departments, handleSetSlug}: Props) => {
-  const CSS_HANDLES = [
-    "container__select"
-  ]
+const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
+  const CSS_HANDLES = ['container__select']
   const handles = useCssHandles(CSS_HANDLES)
 
   const onHandleSetSlug = (event: any) => {
-    handleSetSlug(`${event.target.value}/$\{term\}?initialMap=c&initialQuery=$\{term\}&map=category-1,category-2`)
+    handleSetSlug(
+      `${event.target.value}?initialMap=c&initialQuery&map=category-1,category-2`
+    )
   }
 
-   const departmentOptions:any = departments.map((department: Department) => {
-      return (
-        <option
-        value={department.slug}
-        key={department.id}
-        >
-          {department.name}
-        </option>
-      )
-   })
+  const departmentOptions: any = departments.map((department: Department) => {
+    return (
+      <option value={department.slug} key={department.id}>
+        {department.name}
+      </option>
+    )
+  })
 
-  return(
+  return (
     <select
-    className={handles["container__select"]}
-    onChange={onHandleSetSlug}
-    defaultValue="value0"
+      className={handles.container__select}
+      onChange={onHandleSetSlug}
+      defaultValue="value0"
     >
-      <option disabled value="value0">Selecciona una Opción</option>
+      <option disabled value="value0">
+        Selecciona un Departamento
+      </option>
       {departmentOptions}
     </select>
   )

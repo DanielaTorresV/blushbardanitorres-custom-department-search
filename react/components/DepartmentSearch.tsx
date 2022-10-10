@@ -1,25 +1,19 @@
-import React, { useState } from "react";
-import { useQuery } from "react-apollo";
-import QUERY_VALUE from "../graphql/getDepartmentGroup.graphql";
-import { SearchBar } from "vtex.store-components";
-import DepartmentGroup from "./DepartmentGroup";
-import { useCssHandles } from "vtex.css-handles";
-import "./styles.css"
+import React, { useState } from 'react'
+import { useQuery } from 'react-apollo'
+import { SearchBar } from 'vtex.store-components'
+
+import QUERY_VALUE from '../graphql/getDepartmentGroup.graphql'
+import DepartmentGroup from './DepartmentGroup'
 
 const DepartmentSearch = () => {
   const { data, loading } = useQuery(QUERY_VALUE)
-  const [slug, setSlug] = useState("")
+  const [slug, setSlug] = useState('')
 
-  const CSS_HANDLES = [
-    "lds-heart"
-  ]
-  const handles = useCssHandles(CSS_HANDLES)
-
-  return(
+  return (
     <>
-      {loading ?
-        <div className={handles["lds-heart"]}><div></div></div>
-         :
+      {loading ? (
+        <div>Loading ...</div>
+      ) : (
         <div>
           <DepartmentGroup
             departments={data?.categories}
@@ -31,7 +25,7 @@ const DepartmentSearch = () => {
             displayMode="search-and-clear-buttons"
           />
         </div>
-      }
+      )}
     </>
   )
 }
