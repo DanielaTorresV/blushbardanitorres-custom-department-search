@@ -2,7 +2,7 @@
 
 This custom component allows to do a search with department options.
 
-![image](https://user-images.githubusercontent.com/101153916/195464497-005d49b4-275b-444a-820b-9a8289727c09.png)
+![image](https://user-images.githubusercontent.com/101153916/196551570-f1a7793e-20d8-4074-a496-73393009890b.png)
 
 ## Configuration
 
