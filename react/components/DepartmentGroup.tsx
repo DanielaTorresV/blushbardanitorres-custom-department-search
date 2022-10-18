@@ -31,7 +31,7 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
 
   return (
     <select
-      className={handles.container__select}
+      className={handles['container__select']}
       onChange={onHandleSetSlug}
       defaultValue="value0"
     >
