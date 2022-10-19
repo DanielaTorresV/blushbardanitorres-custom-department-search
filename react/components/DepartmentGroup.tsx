@@ -3,11 +3,11 @@ import { useCssHandles } from 'vtex.css-handles'
 import './styles.css'
 
 type Props = {
-  departments: [Department]
+  departments: [Category]
   handleSetSlug: any
 }
 
-type Department = {
+type Category = {
   id: number
   name: string
   slug: string
@@ -15,10 +15,13 @@ type Department = {
 
 const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
   const onHandleSetSlug = (event: any) => {
-    handleSetSlug(`${event.target.value}`)
+    handleSetSlug(event.target.value)
   }
 
-  const departmentOptions: any = departments.map((department: Department) => {
+  const CSS_HANDLES = ['container__select']
+  const handles = useCssHandles(CSS_HANDLES)
+
+  const departmentOptions: any = departments.map((department: Category) => {
     return (
       <option value={department.slug} key={department.id}>
         {department.name}
@@ -26,14 +29,11 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
     )
   })
 
-  const CSS_HANDLES = ['container__select']
-  const handles = useCssHandles(CSS_HANDLES)
-
   return (
     <select
-      className={handles['container__select']}
       onChange={onHandleSetSlug}
       defaultValue="value0"
+      className={handles.container__select}
     >
       <option disabled value="value0">
         Selecciona un Departamento
