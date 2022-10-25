@@ -22,9 +22,13 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
   const handles = useCssHandles(CSS_HANDLES)
 
   const departmentOptions: any = departments.map((department: Category) => {
+    const departmentSlug = department?.slug
+    const departmentId = department?.id
+    const departmentName = department?.name
+
     return (
-      <option value={department.slug} key={department.id}>
-        {department.name}
+      <option value={departmentSlug} key={departmentId}>
+        {departmentName}
       </option>
     )
   })
