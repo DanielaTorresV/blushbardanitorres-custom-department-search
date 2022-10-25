@@ -11,7 +11,7 @@ const DepartmentSearch = () => {
 
   return (
     <>
-      {!data && loading ? (
+      {loading ? (
         <div>Loading ...</div>
       ) : (
         <div>
